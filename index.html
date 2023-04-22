@@ -47,7 +47,11 @@
                         <a class="nav-link" href="#contact">Contacto</a>
                     </li>
                 </ul>
-                <a href="#" class="btn btn-brand ms-lg-3"><i style="width: 22px;" class="ri-shopping-cart-2-fill"></i></a>
+
+                <a href="#" class="btn btn-brand ms-lg-3 carrito" data-bs-toggle="modal" data-bs-target="#modal"><i style="width: 22px;" class="ri-shopping-cart-2-fill"></i><span class="carrito-contador">0</span></a>
+                
+
+            </a>
             </div>
         </div>
     </nav>
@@ -119,6 +123,29 @@
         </div>
     </section>
     <!-------------------------------------------------------------------------------------------------------->
+    <!-- CARRITO  -->
+    <div class="container-xl">
+        <div class="modal" tabindex="-1" role="dialog" id="modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Carrito</h5>
+                        <button type="button" class="carrito-cerrar" data-bs-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="vaciarCarrito"> Vaciar carrito </button>
+                        <button type="button" id="procesarCompra" class="btn btn-primary"> Continuar compra </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                        <span>Precio total:</span>
+                        <p class="text-center" id="precioTotal"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- CURSOS -->
     <section id="services" class="section-padding border-top">
@@ -449,17 +476,17 @@
                         <div class="line"></div>
                         <p>Redes Sociales</p>
                         <div class="social-icons">
-                            <a href="https://twitter.com/"><i class="ri-twitter-fill"></i></a>
-                            <a href="https://www.instagram.com/"><i class="ri-instagram-fill"></i></a>
-                            <a href="https://github.com/"><i class="ri-github-fill"></i></a>
-                            <a href="https://github.com/"><i class="ri-twitch-fill"></i></a>
+                            <a href="https://twitter.com/" target="_blank"><i class="ri-twitter-fill"></i></a>
+                            <a href="https://www.instagram.com/" target="_blank"><i class="ri-instagram-fill"></i></a>
+                            <a href="https://github.com/" target="_blank"><i class="ri-github-fill"></i></a>
+                            <a href="https://github.com/" target="_blank"><i class="ri-twitch-fill"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <h5 class="mb-0 text-white">CURSOS</h5>
                         <div class="line"></div>
                         <ul>
-                            <li><a href="#services">Fron End</a></li>
+                            <li><a href="#services">Front End</a></li>
                             <li><a href="#services">Back End</a></li>
                             <li><a href="#services">Database</a></li>
                             <li><a href="#services">Marketing Digital</a></li>

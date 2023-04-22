@@ -10,7 +10,7 @@ AOS.init({
 
 });
 
-// Funcionaliaad del boton de contacto.
+// Funcionalidad del boton de contacto.
 const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
 const correo = document.getElementById("correo");
@@ -34,3 +34,8 @@ botonEnviar.addEventListener("click", function(event) {
     confirmacion.innerHTML = "Mensaje enviado";
   }
 });
+
+
+// Carrito de compras
+
+
