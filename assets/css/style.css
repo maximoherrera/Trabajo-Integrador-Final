@@ -176,6 +176,20 @@ img {
     background-color: #e3998e;
 }
 
+.modal-contenedor{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: .5rem;
+    margin: .3rem;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 1rem;
+}
+
+.icon-modal{
+    display: flex;
+    align-items: center;
+}
+
 /* ACERCA DE*/
 #acercade{
     width: 100%;

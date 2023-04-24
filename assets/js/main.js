@@ -38,4 +38,94 @@ botonEnviar.addEventListener("click", function(event) {
 
 // Carrito de compras
 
+const cursos = [
+  {
+      id: 001,
+      nombre: "Desarrollo Web",
+      cantidad: 1,
+      precio: 149.00,
+      descripcion: "Aquí aprenderás tecnologías para el desarrollo de páginas web",
+      icono: "ri-html5-fill"
+  },
+  {
+      id: 002,
+      nombre: "Desarrollo móvil",
+      cantidad: 1,
+      precio: 100.00,
+      descripcion: "Aprende las tecnologías necesarias para desarrollar aplicaciones para Android o iOS",
+      icono: "ri-smartphone-line"
+  },
+  {
+      id: 003,
+      nombre: "Database",
+      cantidad: 1,
+      precio: 120.00,
+      descripcion: "Aprenderás a diseñar, crear y administrar bases de datos con tecnologías como MySQL o MongoDB",
+      icono: "ri-database-2-fill"
+  },
+  {
+    id: 004,
+    nombre: "Marketing Digital",
+    cantidad: 1,
+    precio: 100.00,
+    descripcion: "En este Curso en línea de marketing digital aprenderas a promocionar productos y servicios.",
+    icono: "ri-pie-chart-2-fill"
+  } 
+  ]
+  let carrito = [];
 
+  const contenedor = document.querySelector('#contenedor')
+  
+  cursos.forEach((curso)=>{
+      const{id, nombre, cantidad, precio, icono, descripcion} = curso;
+      contenedor.innerHTML += 
+      `
+      <div class="col-lg-5 col-sm-5" data-aos="fade-down" data-aos-delay="150">
+        <div class="service theme-shadow p-lg-5 p-4">
+          <div class="iconbox">
+            <i class="${icono}"></i>
+          </div>
+          <h5 class="mt-4 mb-3">${nombre}</h5>
+          <p>${descripcion}</p>
+          <p>Cantidad: ${cantidad}</p>
+
+          <button class="btn btn-primary w-100" onclick="agregarAlCarrito(${id})"> 
+            Añadir al carrito 
+          </button>
+
+          <a id="precioCursos" href="#">$${precio} USD </a>
+        </div>
+      </div>
+      `
+  });
+  
+  function agregarAlCarrito(id) {
+      const i = cursos.find((curso) => curso.id === id)
+      carrito.push(i)
+      mostrarCarrito();
+  }
+  
+  const mostrarCarrito = () =>{
+    const carritoModal = document.querySelector('#carritoModal');
+    
+    carrito.forEach((curso)=>{
+        const{id, nombre, cantidad, precio, icono} = curso;
+        carritoModal.innerHTML +=
+        `
+        <div class="modal-contenedor container">
+          <div class="icon-modal"> 
+            <div class="iconbox">
+              <i class="${icono}"></i>
+            </div>
+          </div>
+          
+          <div>
+              <p><b>Producto:</b> ${nombre}</p>
+              <p><b>Precio:</b> $${precio} USD</p>
+              <p><b>Cantidad:</b> ${cantidad}</p>
+              <button class="btn btn-danger">Eliminar curso</button>
+          </div>
+        </div>
+        `
+    });
+};
