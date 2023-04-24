@@ -43,7 +43,7 @@ const cursos = [
       id: 001,
       nombre: "Desarrollo Web",
       cantidad: 1,
-      precio: 149.00,
+      precio: 149.99,
       descripcion: "Aquí aprenderás tecnologías para el desarrollo de páginas web",
       icono: "ri-html5-fill"
   },
@@ -51,7 +51,7 @@ const cursos = [
       id: 002,
       nombre: "Desarrollo móvil",
       cantidad: 1,
-      precio: 100.00,
+      precio: 100.99,
       descripcion: "Aprende las tecnologías necesarias para desarrollar aplicaciones para Android o iOS",
       icono: "ri-smartphone-line"
   },
@@ -59,7 +59,7 @@ const cursos = [
       id: 003,
       nombre: "Database",
       cantidad: 1,
-      precio: 120.00,
+      precio: 119.99,
       descripcion: "Aprenderás a diseñar, crear y administrar bases de datos con tecnologías como MySQL o MongoDB",
       icono: "ri-database-2-fill"
   },
@@ -67,65 +67,119 @@ const cursos = [
     id: 004,
     nombre: "Marketing Digital",
     cantidad: 1,
-    precio: 100.00,
+    precio: 99.99,
     descripcion: "En este Curso en línea de marketing digital aprenderas a promocionar productos y servicios.",
     icono: "ri-pie-chart-2-fill"
-  } 
-  ]
-  let carrito = [];
+  },
+  {
+    id: 005,
+    nombre: "Desarrollo BackEnd",
+    cantidad: 1,
+    precio: 200.99,
+    descripcion: "Curso en línea de desarrollo back-end para crear aplicaciones web escalables y robustas.",
+    icono: "ri-code-box-fill"
+  },
+  {
+    id: 006,
+    nombre: "React Js",
+    cantidad: 1,
+    precio: 149.99,
+    descripcion: "Crea aplicaciones web interactivas y escalables usando React.",
+    icono: "ri-reactjs-line"
+  }
+];
+let carrito = [];
+const contenedor = document.querySelector('#contenedor');
+const carritoContador = document.querySelector('.carrito-contador');
+const vaciarCarrito = document.querySelector('#vaciar-carrito');
+const precioTotal = document.querySelector('#precioTotal');
 
-  const contenedor = document.querySelector('#contenedor')
-  
-  cursos.forEach((curso)=>{
-      const{id, nombre, cantidad, precio, icono, descripcion} = curso;
-      contenedor.innerHTML += 
-      `
-      <div class="col-lg-5 col-sm-5" data-aos="fade-down" data-aos-delay="150">
-        <div class="service theme-shadow p-lg-5 p-4">
-          <div class="iconbox">
-            <i class="${icono}"></i>
-          </div>
-          <h5 class="mt-4 mb-3">${nombre}</h5>
-          <p>${descripcion}</p>
-          <p>Cantidad: ${cantidad}</p>
+cursos.forEach((curso)=>{
+  const{id, nombre, cantidad, precio, icono, descripcion} = curso;
+  contenedor.innerHTML += 
+  `
+  <div class="col-lg-5 col-sm-5" data-aos="fade-down" data-aos-delay="150">
+    <div class="service theme-shadow p-lg-5 p-4">
+      <div class="iconbox">
+        <i class="${icono}"></i>
+      </div>
+      <h5 class="mt-4 mb-3">${nombre}</h5>
+      <p>${descripcion}</p>
+      <p>Cantidad: ${cantidad}</p>
+      <button class="btn btn-primary w-100" onclick="agregarAlCarrito(${id})"> 
+        Añadir al carrito 
+      </button>
+      <p class="text-center" id="precioCursos">$${precio} USD </p>
+    </div>
+  </div>
+  `
+});
 
-          <button class="btn btn-primary w-100" onclick="agregarAlCarrito(${id})"> 
-            Añadir al carrito 
-          </button>
+function agregarAlCarrito(id) {
+  const existe = carrito.some(curso => curso.id === id)
+  if (existe) {
+    const curso = carrito.map(curso => {
+      if (curso.id === id) {
+        curso.cantidad++
+      }
+    })
+  }else{
+    const i = cursos.find((curso) => curso.id === id)
+    carrito.push(i)
+  }
+  mostrarCarrito();
+}
 
-          <a id="precioCursos" href="#">$${precio} USD </a>
+vaciarCarrito.addEventListener('click', ()=>{
+  carrito.length = [];
+  mostrarCarrito();
+})
+
+const mostrarCarrito = () =>{
+  const carritoModal = document.querySelector('#carritoModal');
+  carritoModal.innerHTML = '';
+  carrito.forEach((curso)=>{
+    const{id, nombre, cantidad, precio, icono} = curso;
+    carritoModal.innerHTML +=
+    `
+    <div class="modal-contenedor container">
+      <div class="icon-modal"> 
+        <div class="iconbox">
+          <i class="${icono}"></i>
         </div>
       </div>
-      `
+      <div>
+        <p><b>Producto:</b> ${nombre}</p>
+        <p><b>Precio:</b> $${precio} USD</p>
+        <p><b>Cantidad:</b> ${cantidad}</p>
+        <button class="btn btn-danger" onclick="eliminarCurso(${id})">Eliminar curso</button>
+      </div>
+    </div>
+    `
   });
-  
-  function agregarAlCarrito(id) {
-      const i = cursos.find((curso) => curso.id === id)
-      carrito.push(i)
-      mostrarCarrito();
+
+  if (carrito.length === 0) {
+    carritoModal.innerHTML = 
+    `
+    <p class="text-center fw-semibold fs-3">Carrito vacio</p>
+    `
   }
-  
-  const mostrarCarrito = () =>{
-    const carritoModal = document.querySelector('#carritoModal');
-    
-    carrito.forEach((curso)=>{
-        const{id, nombre, cantidad, precio, icono} = curso;
-        carritoModal.innerHTML +=
-        `
-        <div class="modal-contenedor container">
-          <div class="icon-modal"> 
-            <div class="iconbox">
-              <i class="${icono}"></i>
-            </div>
-          </div>
-          
-          <div>
-              <p><b>Producto:</b> ${nombre}</p>
-              <p><b>Precio:</b> $${precio} USD</p>
-              <p><b>Cantidad:</b> ${cantidad}</p>
-              <button class="btn btn-danger">Eliminar curso</button>
-          </div>
-        </div>
-        `
-    });
+
+  carritoContador.textContent = carrito.length;
+  precioTotal.textContent = "$" + carrito.reduce((acc, curso) => acc + curso.cantidad * curso.precio, 0) + " USD";
 };
+
+if (carrito.length === 0) {
+  carritoModal.innerHTML = 
+  `
+  <p class="text-center fw-semibold fs-3">Carrito vacio</p>
+  `
+}
+
+function eliminarCurso(id){
+  const cursoId = id;
+  carrito = carrito.filter((curso) => curso.id !== cursoId);
+  console.log(carrito);
+  mostrarCarrito();
+}
+
