@@ -93,6 +93,7 @@ const contenedor = document.querySelector('#contenedor');
 const carritoContador = document.querySelector('.carrito-contador');
 const vaciarCarrito = document.querySelector('#vaciar-carrito');
 const precioTotal = document.querySelector('#precioTotal');
+const procesarCompra = document.querySelector('#procesarCompra')
 
 cursos.forEach((curso)=>{
   const{id, nombre, cantidad, precio, icono, descripcion} = curso;
@@ -128,6 +129,21 @@ function agregarAlCarrito(id) {
     carrito.push(i)
   }
   mostrarCarrito();
+}
+
+if (procesarCompra) {
+  procesarCompra.addEventListener("click", () => {
+    if (carrito.length === 0) {
+      Swal.fire({
+        title: "¡Tu carrito está vacio!",
+        text: "Compra algo para continuar con la compra",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
+    } else {
+      location.href = "compra.html";
+    }
+  });
 }
 
 vaciarCarrito.addEventListener('click', ()=>{
@@ -182,4 +198,27 @@ function eliminarCurso(id){
   console.log(carrito);
   mostrarCarrito();
 }
+
+// Informacion del carrito
+
+const carrito1 = JSON.parse(localStorage.getItem('carrito'));
+
+const formularioCompra = document.querySelector('#formulario-compra');
+formularioCompra.addEventListener('submit', (event) => {
+
+  event.preventDefault();
+  const nombre = document.querySelector('#nombre').value;
+  const correo = document.querySelector('#correo').value;
+
+  localStorage.setItem('compra', JSON.stringify({
+    usuario: {
+      nombre,
+      correo
+    }
+  }));
+
+  window.location.href = 'confirmacion_compra.html';
+});
+
+
 
