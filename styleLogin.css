@@ -36,19 +36,19 @@ body{
 }
 
 .img-1{
-    background-image: url(/Trabajo-Integrador-Final/imagesLogin/codecraft.png);
+    background-image: url(/imagesLogin/codecraft.png);
     background-size: cover;
     background-position: center;
 }
 
 .img-2{
-    background-image: url(/Trabajo-Integrador-Final/imagesLogin/pc1.jpg);
+    background-image: url(/imagesLogin/pc1.jpg);
     background-size: cover;
     background-position: center;
 }
 
 .img-3{
-    background-image: url(/Trabajo-Integrador-Final/imagesLogin/pc2.jpg);
+    background-image: url(/imagesLogin/pc2.jpg);
     background-size: cover;
     background-position: center;
 }
