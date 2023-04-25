@@ -21,9 +21,22 @@
           <label for="correo">Correo electrónico:</label>
           <input type="email" id="correo" name="correo" required>
         </div>
+        <h1 id="text-calculo">Calcule su precio en dolares</h1>
+        <h3 id="text-calc">Ingrese el precio de su producto:</h3>
+
+        <label for="dolares">USD:</label >
+        <input type="number" id="dolares" name="dolares">
+        <br>
+        <label for="pesos">Pesos:</label >
+        <input type="number" id="pesos" name="pesos" disabled>
+        <br>
+        <button type="button" onclick="convertir()">Convertir</button>
+        </div>
         <button type="submit">Realizar Compra</button>
       </form>
       
     
+
+      <script src="/compras.js"></script>
 </body>
 </html>
