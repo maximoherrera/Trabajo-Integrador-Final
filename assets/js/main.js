@@ -199,26 +199,6 @@ function eliminarCurso(id){
   mostrarCarrito();
 }
 
-// Informacion del carrito
-
-const carrito1 = JSON.parse(localStorage.getItem('carrito'));
-
-const formularioCompra = document.querySelector('#formulario-compra');
-formularioCompra.addEventListener('submit', (event) => {
-
-  event.preventDefault();
-  const nombre = document.querySelector('#nombre').value;
-  const correo = document.querySelector('#correo').value;
-
-  localStorage.setItem('compra', JSON.stringify({
-    usuario: {
-      nombre,
-      correo
-    }
-  }));
-
-  window.location.href = 'confirmacion_compra.html';
-});
 
 
 
