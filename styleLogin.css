@@ -1,0 +1,54 @@
+:root {
+    --dark: #16191c;
+    --dark-x: #1e2126;
+    --light: #ffffff;
+}
+
+.bg-dark{
+    background-color: var(--dark) !important;
+}
+.bg-dark-x{
+    background-color: var(--dark-x);
+}
+.text-light{
+    color: var(--light) !important;
+}
+
+body{
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 300;
+    color: var(--light);
+}
+
+.btn{
+    min-height: 3.125rem;
+    font-weight: 600;
+}
+
+.form-control{
+    min-height: 3.125rem;
+    line-height: initial;
+}
+
+.form-control:focus{
+    background-color: var(--dark-x);
+    outline: none;
+}
+
+.img-1{
+    background-image: url(/Trabajo-Integrador-Final/imagesLogin/codecraft.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.img-2{
+    background-image: url(/Trabajo-Integrador-Final/imagesLogin/pc1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.img-3{
+    background-image: url(/Trabajo-Integrador-Final/imagesLogin/pc2.jpg);
+    background-size: cover;
+    background-position: center;
+}
