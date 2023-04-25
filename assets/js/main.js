@@ -24,14 +24,35 @@ const noConfirm = document.getElementById("noConfirm");
 botonEnviar.addEventListener("click", function(event) {
   //Evitamos que se envíe el formulario por defecto
   event.preventDefault();
-  
+  let regCorreo = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let warning = "";
+  let entrar = false;
   //Verificamos que los campos del formulario no estén vacíos
-  if (nombre.value === "" || apellido.value === "" || correo.value === "" || asunto.value === "" || mensaje.value === "") {
-    //Si algún campo está vacío, mostramos el mensaje de error
-    noConfirm.innerHTML = "Complete los campos";
-  } else {
+  if (nombre.value === "") {
+    warning += `<p>Agregue un nombre</p>`;
+    entrar = true;
+  }
+  if (apellido.value === "") {
+    warning += `<p>Agregue un apellido</p>`;
+    entrar = true;
+  }
+  if (!regCorreo.test(correo.value)) {
+    warning += `<p>Agregue un correo válido</p>`;
+    entrar = true;
+  }
+  if (asunto.value === "") {
+    warning += `<p>Agregue un asunto</p>`;
+    entrar = true;
+  }
+  if (mensaje.value === "") {
+    warning += `<p>Agregue un mensaje</p>`;
+    entrar = true;
+  }
+  if (entrar) {
+    alerta.innerHTML = warning;
+  }else{
     //Si todos los campos están completos, mostramos el mensaje de confirmación
-    confirmacion.innerHTML = "Mensaje enviado";
+    alerta.innerHTML = `<p class="confirmacion">¡Excelente! su mensaje ha sido enviado con éxito.</p>`;
   }
 });
 

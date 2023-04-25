@@ -329,11 +329,19 @@ img {
     border-color: var(--c-brand);
 }
 
-#confirmacion{
+.confirmacion{
+    font-weight: 500;
+    background-color: #eeeeeefd;
+    border-radius: .3rem;
     color: rgb(12, 158, 12);
+    text-align: center;
 }
-#noConfirm{
-    color: red;
+.alerta p{
+    margin: .3rem;
+    font-weight: 500;
+    background-color: #eeeeeefd;
+    border-radius: .3rem;
+    text-align: center;
 }
 /* FOOTER */
 footer {
