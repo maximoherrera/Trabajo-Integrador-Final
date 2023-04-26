@@ -58,6 +58,7 @@ botonEnviar.addEventListener("click", function(event) {
     });
     setTimeout(() => {
       form.reset();
+      alerta.innerHTML = ' ';
     }, 1000);
   }
 });
