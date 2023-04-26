@@ -5,55 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/compra.css">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/logocelestefav.png">
 </head>
 <body>
-<<<<<<< HEAD
-    <form action="/index.html" id="formulario-compra">
-        <div class="img-container">
-             <img  src="/assets/images/logo-1DARK.png" alt="logocompra" id="logo-imagen">
-        </div>
-        <div>
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" required>
-        </div>
-        <div>
-          <label for="correo">Correo electrónico:</label>
-          <input type="email" id="correo" name="correo" required>
-        </div>
-        <h1 id="text-calculo">Calcule su precio en dolares</h1>
-        <h3 id="text-calc">Ingrese el precio de su producto:</h3>
-
-        <label for="dolares">USD:</label >
-        <input type="number" id="dolares" name="dolares">
-        <br>
-        <label for="pesos">Pesos:</label >
-        <input type="number" id="pesos" name="pesos" disabled>
-        <br>
-        <button type="button" onclick="convertir()">Convertir</button>
-        </div>
-        <button type="submit">Realizar Compra</button>
-      </form>
-      
-    
-
-      <script src="/compras.js"></script>
-=======
 <form action="/index.html" id="formulario-compra">
   <div class="img-container">
-    <img  src="/assets/images/logo-1DARK.png" alt="logocompra" id="logo-imagen">
+    <a href="/index.html">
+      <img  src="/assets/images/logo-1DARK.png" alt="logocompra" id="logo-imagen">
+    </a>
+    
   </div>
   <div>
     <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
+    <input type="text" id="nombre" name="nombre" >
   </div>
   <div>
     <label for="correo">Correo electrónico:</label>
-    <input type="email" id="correo" name="correo" required>
+    <input type="email" id="correo" name="correo" >
   </div>
-  <button type="submit">Realizar Compra</button>
+  <h1 id="text-calculo">Calcule su precio en dolares</h1>
+  <h3 id="text-calc">Ingrese el precio de su producto:</h3>
+  <label for="dolares">USD:</label >
+  <input type="number" id="dolares" name="dolares">
+  <label for="pesos">Pesos:</label >
+  <input type="number" id="pesos" name="pesos" disabled>
+  <div class="botones">
+    <button type="button" class="convertir" onclick="convertir()">Convertir</button>
+    <button type="submit" id="enviar">Realizar Compra</button>
+  </div>
+  <p id="confirmacion" class="confirmacion"></p>
+  <p id="alerta" class="text-danger alerta"></p>
 </form>
->>>>>>> fa387cd4b72adf4de71c517fe686c70d8dfe3963
+
+  <script src="/assets/js/compras.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>

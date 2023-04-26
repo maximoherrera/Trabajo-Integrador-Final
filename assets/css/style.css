@@ -329,6 +329,12 @@ img {
     border-color: var(--c-brand);
 }
 
+#map {
+	height: 500px;
+	width: 100%;
+}
+
+
 .confirmacion{
     font-weight: 500;
     background-color: #eeeeeefd;

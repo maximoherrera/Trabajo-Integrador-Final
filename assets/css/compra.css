@@ -52,5 +52,39 @@ img {
   margin-bottom: 15px;
 }
 input {
-  background-color:rgb(231, 217, 217); 
+  background-color:rgb(238, 238, 218); 
+}
+
+.convertir{
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #d6cb04;
+}
+
+.convertir:hover{
+  background-color: #999703;
+}
+
+.botones{
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.confirmacion{
+  font-weight: 500;
+  background-color: #eeeeeefd;
+  border-radius: .3rem;
+  color: rgb(12, 158, 12);
+  text-align: center;
+}
+.alerta p{
+  margin: .3rem;
+  font-weight: 500;
+  background-color: #eeeeeefd;
+  border-radius: .3rem;
+  text-align: center;
 }

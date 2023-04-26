@@ -17,8 +17,8 @@ const correo = document.getElementById("correo");
 const asunto = document.getElementById("asunto");
 const mensaje = document.getElementById("mensaje");
 const botonEnviar = document.getElementById("enviar");
-const confirmacion = document.getElementById("confirmacion");
 const noConfirm = document.getElementById("noConfirm");
+const form = document.getElementById("form");
 
 //Agregamos un "event listener" al botón de enviar que escucha cuando se hace clic
 botonEnviar.addEventListener("click", function(event) {
@@ -51,8 +51,14 @@ botonEnviar.addEventListener("click", function(event) {
   if (entrar) {
     alerta.innerHTML = warning;
   }else{
-    //Si todos los campos están completos, mostramos el mensaje de confirmación
-    alerta.innerHTML = `<p class="confirmacion">¡Excelente! su mensaje ha sido enviado con éxito.</p>`;
+    Swal.fire({
+      title: "¡Excelente! su mensaje ha sido enviado con éxito",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
+    setTimeout(() => {
+      form.reset();
+    }, 1000);
   }
 });
 
